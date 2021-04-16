@@ -5,7 +5,6 @@ l_genes = ['U5', 'ADA', 'FRAT1', 'FXN', 'RNU6']
 
 IP = "127.0.0.1"
 PORT = 8080
-
 c = Client(IP, PORT)
 print('Connection to SERVER. Client ip, port: ', str(IP) + ',', str(PORT))
 
