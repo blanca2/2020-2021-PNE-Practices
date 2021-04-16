@@ -1,5 +1,5 @@
 import socket
-PORT = 25625
+PORT = 8080
 IP = "127.0.0.1"
 MAX_OPEN_REQUEST = 5
 # counting the number of connections

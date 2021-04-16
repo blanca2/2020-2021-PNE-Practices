@@ -1,9 +1,8 @@
 import socket
-
 class Client:
     def __init__(self, ip, port):
         self.ip = ip
-        self.port =port
+        self.port = port
 
     def ping(self):
         print("Ok")
@@ -15,20 +14,20 @@ class Client:
             print("Server is up")
         except ConnectionRefusedError:
             print("Could not connect to server. Is it running? Check your IP and PORT")
+
     def __str__(self):
         return "Connection to SERVER at" + self.ip + ", PORT: " + str(self.port)
+
     def talk(self, msg):
+        #--Create socket
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # establish the connection to the Server (IP, PORT)
+
         s.connect((self.ip, self.port))
-        # Send data.
-        s.send(str.encode(msg))
-        # Receive data
-        response = s.recv(2048).decode("utf-8")
-        # Close the socket
+        print("To Server:", msg)
+        s.send(msg.encode())
+        response = s.recv(2840).decode("utf-8")
         s.close()
-        # Return the response
-        return response
+        return "From server: " + response
     def debug_talk (self, msg):
         response = self.talk(msg)
         color_response = colored(response, "green")

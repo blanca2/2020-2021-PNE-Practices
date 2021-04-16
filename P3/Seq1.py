@@ -1,8 +1,13 @@
+from pathlib import Path
+def test_sequences():
+    s1 = Seq()
+    s2 = Seq("ACTGA")
+    s3 = Seq("Invalid sequence")
+    return s1, s2, s3
 class Seq:
     """A class for representing sequences"""
     NULL_SEQUENCE = "NULL"
     INVALID_SEQUENCE = "ERROR"
-
     def __init__(self, strbases=NULL_SEQUENCE):
         # Initialize the sequence with the value
         # passed as argument when creating the object
@@ -10,14 +15,21 @@ class Seq:
             print("NULL sequence created")
             self.strbases = strbases
         else:
-            if Seq.is_valid_sequence(strbases):
+            if Seq.is_valid_sequence_2(strbases):
                 print("New sequence created")
                 self.strbases = strbases
             else:
                 self.strbases = Seq.INVALID_SEQUENCE
                 print("INVALID seq!")
 
+
     @staticmethod
+    def is_valid_sequence_2(bases):
+        for c in bases:
+            if c != "A" and c != "C" and c != "G" and c != "T":
+                return False
+        return True
+
     def is_valid_sequence(self):
         for c in self.strbases:
             if c != "A" and c != "C" and c != "G" and c != "T":
@@ -27,8 +39,7 @@ class Seq:
     @staticmethod
     def print_seqs(list_sequences):
         for i in range(0, len(list_sequences)):
-            text = "Sequence" + str(i) + ":(Length:", str(list_sequences[i].len()) + ")" + str(list_sequences[i])
-            termcolor.cprint(text, "yellow")
+            print("Sequence", i, ":(Length:", list_sequences[i].len(), ")", list_sequences[i])
 
     def __str__(self):
         """Method called when the object is being printed"""
@@ -43,24 +54,17 @@ class Seq:
             return len(self.strbases)
 
     def count_bases(self):
-        a, c, g, t = 0, 0, 0, 0
-        if self.strbases == Seq.NULL_SEQUENCE or self.strbases == Seq.INVALID_SEQUENCE:
-            return a, c, g, t
-        else:
-            for ch in self.strbases:
-                if ch == "A":
-                    a += 1
-                elif ch == "C":
-                    c += 1
-                elif ch == "G":
-                    g += 1
-                elif ch == "T":
-                    t += 1
-        return a, c, g, t
-    def count(self):
-        a, c, g, t = self.count_bases()
-        dict_bases = {"A": a, "C": c, "G": g, "T": t}
-        return dict_bases
+        total = len(self.strbases)
+        dict_bases = {}
+        for base in self.strbases:
+            if not base in dict_bases:
+                dict_bases[base] = 1
+            else:
+                dict_bases[base] += 1
+        text = ''
+        for key in dict_bases.keys():
+            text = text + key + ': ' + str(round((dict_bases[key] / total) * 100, 1)) + '% \n'
+        return text
 
     def reverse(self):
         if self.strbases == Seq.NULL_SEQUENCE:
