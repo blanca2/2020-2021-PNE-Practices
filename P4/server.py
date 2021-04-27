@@ -10,6 +10,12 @@ def read_html_file(filename):
     content = pathlib.Path(filename).read_text()
     return content
 
+def get_resource(path):
+    resp = ""
+    if path == "/info/A":
+        resp = Path("A.html").read_text()
+    return resp
+
 def process_client(s):
     # -- Receive the request message
     req_raw = s.recv(2000)
@@ -25,7 +31,8 @@ def process_client(s):
     path_name = req_line.split(' ')[1]
 
     print("Resource requested: ", req_line)
-    termcolor.cprint(req_line, "green")
+    termcolor.cprint(self.req_line, "green")
+    termcolor.cprint(self.path, 'blue')
 
     # -- Generate the response message
     # It has the following lines

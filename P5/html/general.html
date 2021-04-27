@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bases server</title>
+  </head>
+  <body style="background-color: {{base_information.colour}};">
+    <h1>{{base_information.name}}</h1>  <!--base_information.name is a way of accessing dictionaries. it's the same as base_information with the key between commas and brackets but in html files we can write it with the dot (simpler)-->
+    <p>Letter: {{base_information.letter}}</p>
+    <p>Chemical formula: {{base_information.formula}}</p>
+    <a href="{{base_information.link}}">More info</a>
+    <a href="/">Main Page</a>
+  </body>
+</html>
+
+
+
+<!--this file will have the same structure as A.html, C.html, G.html, T.html but the particular information (p.e. chemical formula) will be turned into variables (by enclosing them into double curled braces ) , in order to change the static webpage into a dynamic one-->
+<!--this file is just a long str in which we've to substitute the values for the created variables. Those values will be found in the server2 (BASES INFORMATION), i.e. we create a database (dictionary)-->
