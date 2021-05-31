@@ -23,21 +23,21 @@ def get(cs, l_seqs, argument):
 def info(cs, argument):
     print_colored("INFO", "yellow")
     sequence = Seq(argument)
-    response = "Total length:", str(sequence.len()), "\n", str(sequence.count_bases()) +"\n"
+    response = "Total length:", str(sequence.len()), "\n", str(sequence.count_bases()) + "\n"
     print(response)
     cs.send(response.encode())
 
 def comp(cs, argument):
     print_colored("COMP", "yellow")
     sequence = Seq(argument)
-    response = str(sequence.complement()), "\n"
+    response = Seq.complement(sequence) + "\n"
     print(response)
     cs.send(response.encode())
 
 def rev(cs, argument):
     print_colored("REV", "yellow")
     sequence = Seq(argument)
-    response = str(sequence.reverse()), "\n"
+    response = str(sequence.reverse()) + "\n"
     print(response)
     cs.send(response.encode())
 

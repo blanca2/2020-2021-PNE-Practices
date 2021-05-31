@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: lightblue">
+        <p>Your sequence: {{context.gene_name}}</p>
+        <p></p>
+        <p>Information of the basis:</p>
+        <p> Percentages:</p>
+
+        {%for k, n in context.percentages%}
+            <p> {{n}}</p>
+        {%endfor%}
+
+
+        <p> Total length: </p>
+        {{context.length}}
+       <br>
+        <br>
+        <a href="/">Main page</a>
+      </body>
+    </html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: lightblue">
+<p> Total num of species {{context.num_total_species}} </p>
+<p> Total num of species selected {{context.num_regs}}</p>
+<p>  Species: </p>
+<ul>
+    {%for specie in context.species%}
+    <li>{{specie.display_name}}</li>
+    {%endfor%}
+</ul>
+<a href="/">Main page</a>
+</body>
+</html>

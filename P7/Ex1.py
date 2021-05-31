@@ -18,5 +18,3 @@ if dict_response["ping"] == 1:
 else:
     print("Database is down!!!!") # https://rest.ensembl.org/sequence/id/ENSG00000080603?content-type=application/json
 
-
-

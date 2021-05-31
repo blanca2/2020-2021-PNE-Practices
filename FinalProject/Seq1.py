@@ -54,17 +54,28 @@ class Seq:
             return len(self.strbases)
 
     def count_bases(self):
-        total = len(self.strbases)
-        dict_bases = {}
-        for base in self.strbases:
-            if not base in dict_bases:
-                dict_bases[base] = 1
-            else:
-                dict_bases[base] += 1
-        text = ''
-        for key in dict_bases.keys():
-            text = text + key + ': ' + str(round((dict_bases[key] / total) * 100, 1)) + '% \n'
-        return text
+        a, c, g, t= 0, 0, 0, 0
+        if not (self.strbases == Seq.NULL_SEQUENCE) and not (self.strbases == Seq.INVALID_SEQUENCE):
+            for ch in self.strbases:
+                if ch == "A":
+                    a += 1
+                elif ch == "T":
+                    t += 1
+                elif ch == "C":
+                    c += 1
+                elif ch == "G":
+                    g += 1
+        return a, c, g, t
+
+    def percentages(self, count_bases, seq_len):
+        a = "A:" + str(round(count_bases[0] / seq_len * 100, 2)) + "%"
+        c = "C:" + str(round(count_bases[1] / seq_len * 100, 2)) + "%"
+        g = "G:" + str(round(count_bases[2] / seq_len * 100, 2)) + "%"
+        t = "T:" + str(round(count_bases[3] / seq_len * 100, 2)) + "%"
+        return {"A": a, "C": c, "G": g, "T": t}
+    @staticmethod
+    def frequent_base(dict_count):
+        return max(dict_count, key=dict_count.get)
 
     def reverse(self):
         if self.strbases == Seq.NULL_SEQUENCE:
