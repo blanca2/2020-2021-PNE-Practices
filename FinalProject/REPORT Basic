@@ -54,7 +54,6 @@ Test report example
 
 * TEST 3:
 * Input: http://localhost:8081/listSpecies?specie=1220
-
 * Output:
 
 <!DOCTYPE html>
@@ -75,7 +74,6 @@ Test report example
 ---> Karyotype endpoint
 
 * TEST 1:
-
 * Input: http://localhost:8081/karyotype?specie=human
 * Output:
 <!DOCTYPE html>
@@ -210,6 +208,23 @@ Test report example
 </body>
 </html>
 
+
+* TEST 3:
+* Input: http://localhost:8081/karyotype?specie=
+*Output:
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Bases server</title>
+  </head>
+  <body style="background-color: #ff0000;">
+    <h1>ERROR</h1>
+    <p>Resource not available</p>
+    <a href="/">Main Page</a>
+  </body>
+</html>>
 ====================
 
 ---> Chromosome endpoint
