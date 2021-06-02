@@ -74,12 +74,14 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 num_total_species = len(species)
                 l_species = []
                 i = 0
-                while i <= num_species:
+                while i <= (num_species - 1):
                     l_species.append(species[i])
                     i += 1
-
                 context = {'num_total_species': num_total_species, 'num_regs': num_species, 'species': l_species}
                 contents = read_template_html_file('./html/species.html').render(context=context)
+
+            except IndexError:
+                contents = su.read_template_html_file('html/error.html').render()
             except ValueError:
                 contents = read_template_html_file('html/error.html').render()
         elif path_name == '/karyotype':

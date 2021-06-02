@@ -1,4 +1,5 @@
 from pathlib import Path
+
 def test_sequences():
     s1 = Seq()
     s2 = Seq("ACTGA")
@@ -39,7 +40,7 @@ class Seq:
     @staticmethod
     def print_seqs(list_sequences):
         for i in range(0, len(list_sequences)):
-            print("Sequence", i, ":(Length:", list_sequences[i].len(), ")", list_sequences[i])
+            print("Sequence" + str(i) + ":(Length:" + str(list_sequences[i].len()) + ")" + str(list_sequences[i]))
 
     def __str__(self):
         """Method called when the object is being printed"""
@@ -72,7 +73,7 @@ class Seq:
 
     def count(self):
         a, c, g, t = self.count_bases()
-        dict_bases ={"A": a, "C": c, "G": g, "T": t}
+        dict_bases = {"A": a, "C": c, "G": g, "T": t}
         return dict_bases
 
     def reverse(self):

@@ -1,5 +1,5 @@
 import socket
-import server_utils
+import server_utils0
 
 l_seqs = ['AACCGTAAACCGTAAACCGTA', 'TAAACCGTATAAACCGTA', 'AACTABCCAATC', 'AAGGTCGATGCAGCCCCAAA', 'GGTACCTAAAGGC']
 # -- Step 1: create the socket
@@ -47,7 +47,7 @@ while True:
 
     msg = msg_raw.decode()
 
-    formatted_message = server_utils.format_command(msg)
+    formatted_message = server_utils0.format_command(msg)
     print(formatted_message)
     formatted_message = formatted_message.split(" ")
 
@@ -58,22 +58,22 @@ while True:
         argument = formatted_message[1]
 
     if formatted_message == "PING":
-        server_utils.ping(cs)
+        server_utils0.ping(cs)
 
     elif command == "GET":
-        server_utils.get(cs, l_seqs, argument)
+        server_utils0.get(cs, l_seqs, argument)
 
     elif command == "INFO":
-        server_utils.info(cs, argument)
+        server_utils0.info(cs, argument)
 
     elif command == "COMP":
-        server_utils.comp(cs, argument)
+        server_utils0.comp(cs, argument)
 
     elif command == "REV":
-        server_utils.rev(cs, argument)
+        server_utils0.rev(cs, argument)
 
     elif command == "GENE":
-        server_utils.gene(cs, argument)
+        server_utils0.genes(cs, argument)
 
     else:
         response = "Not available command"

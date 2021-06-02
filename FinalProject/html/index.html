@@ -16,6 +16,8 @@
       {% for n in context.contents %}
       <option value="{{n}}">{{n}}</option>
         {% endfor %}
+      <br>
+      <br>
         <input type="submit" value="Send">
     </form>
       <br>
@@ -26,6 +28,8 @@
       <br>
       Select the species:
       <input type="text" name="specie">
+      <br>
+      <br>
       <input type="submit" value="Send">
     </form>
     <br>
@@ -40,35 +44,43 @@
   <br>
   Select a chromosome:
   <input type="text" name="chromosome">
+  <br>
+  <br>
   <input type="submit" value="Send">
 </form>
       <br>
       <br>
     <h2>Medium Level Services</h2>
-    <form action="/geneSeq" method="get">
+    <form action="geneSeq" method="get">
         4) Select a gene to get the complete sequence:
       <br>
         <br>
 
         Gene: <input type="text" name="gene">
+      <br>
+      <br>
         <input type="submit" value="Send">
       </form>
 <br>
       <br>
-    <form action="/geneInfo" method="get">
+    <form action="geneInfo" method="get">
         5) Select a gene to get the complete information:
       <br>
         <br>
         Gene: <input type="text" name="gene">
+      <br>
+      <br>
         <input type="submit" value="Send">
       <br>
       <br>
       </form>
-    <form action="/geneCalc" method="get">
-        5) Select a gene to get the percentages and length:
+    <form action="geneCalc" method="get">
+        6) Select a gene to get the percentages and length:
       <br>
         <br>
         Gene: <input type="text" name="gene">
+      <br>
+      <br>
         <input type="submit" value="Send">
       </form>
   </body>

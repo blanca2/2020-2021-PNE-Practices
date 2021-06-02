@@ -30,5 +30,5 @@ print(f"{response}")
 
 print("Testing GENE:")
 for g in l_genes:
-    response = c.talk("GENE " + g)
+    response = str(c.talk("GENE: " + g))
     print(f"{response}")

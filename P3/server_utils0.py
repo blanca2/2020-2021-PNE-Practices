@@ -23,7 +23,7 @@ def get(cs, l_seqs, argument):
 def info(cs, argument):
     print_colored("INFO", "yellow")
     sequence = Seq(argument)
-    response = "Total length:", str(sequence.len()), "\n", str(sequence.count_bases()) + "\n"
+    response = "Total length:" + str(sequence.len()) + "\n" + str(sequence.count_bases()) + "\n"
     print(response)
     cs.send(response.encode())
 
@@ -41,10 +41,10 @@ def rev(cs, argument):
     print(response)
     cs.send(response.encode())
 
-def gene(cs, argument):
+def genes(cs, gene):
     print_colored("GENE", "yellow")
-    sequence = Seq(argument)
-    response = str(sequence.read_fasta("P3/" + argument + ".txt"))
+    sequence = Seq()
+    response = str(sequence.read_fasta('./SEQS/' + gene + '.txt'))
     print(response)
     cs.send(response.encode())
 

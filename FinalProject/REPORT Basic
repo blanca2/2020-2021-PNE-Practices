@@ -1,0 +1,252 @@
+Test report example
+====================
+
+---> listSpecies endpoint
+
+* TEST 1:
+
+* Input: http://localhost:8081/listSpecies?specie=2
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: lightblue">
+<p> Total num of species 310 </p>
+<p> Total num of species selected 2</p>
+<p>  Species: </p>
+<ul>
+
+<li>Little spotted kiwi</li>
+
+<li>Indian glassy fish</li>
+
+</ul>
+<a href="/">Main page</a>
+</body>
+</html>
+
+* TEST 2:
+* Input: http://localhost:8081/listSpecies?specie=1
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: lightblue">
+<p> Total num of species 310 </p>
+<p> Total num of species selected 1</p>
+<p>  Species: </p>
+<ul>
+
+<li>Little spotted kiwi</li>
+
+</ul>
+<a href="/">Main page</a>
+</body>
+</html>
+
+* TEST 3:
+* Input: http://localhost:8081/listSpecies?specie=1220
+
+* Output:
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Bases server</title>
+  </head>
+  <body style="background-color: #ff0000;">
+    <h1>ERROR</h1>
+    <p>Resource not available</p>
+    <a href="/">Main Page</a>
+  </body>
+</html>
+
+====================
+
+---> Karyotype endpoint
+
+* TEST 1:
+
+* Input: http://localhost:8081/karyotype?specie=human
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The name of the chromosomes are: </title>
+</head>
+<body style="background-color: lightblue">
+<p>The number of chromosomes:</p>
+<p></p>
+<ul>
+
+    <li type="square">1</li>
+
+    <li type="square">2</li>
+
+    <li type="square">3</li>
+
+    <li type="square">4</li>
+
+    <li type="square">5</li>
+
+    <li type="square">6</li>
+
+    <li type="square">7</li>
+
+    <li type="square">8</li>
+
+    <li type="square">9</li>
+
+    <li type="square">10</li>
+
+    <li type="square">11</li>
+
+    <li type="square">12</li>
+
+    <li type="square">13</li>
+
+    <li type="square">14</li>
+
+    <li type="square">15</li>
+
+    <li type="square">16</li>
+
+    <li type="square">17</li>
+
+    <li type="square">18</li>
+
+    <li type="square">19</li>
+
+    <li type="square">20</li>
+
+    <li type="square">21</li>
+
+    <li type="square">22</li>
+
+    <li type="square">X</li>
+
+    <li type="square">Y</li>
+
+    <li type="square">MT</li>
+
+</ul>
+<a href="/">Main page</a>
+</body>
+</html>
+
+
+* TEST 2:
+
+* Input: view-source: http://localhost:8081/karyotype?specie=mouse
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The name of the chromosomes are: </title>
+</head>
+<body style="background-color: lightblue">
+<p>The number of chromosomes:</p>
+<p></p>
+<ul>
+
+    <li type="square">1</li>
+
+    <li type="square">2</li>
+
+    <li type="square">3</li>
+
+    <li type="square">4</li>
+
+    <li type="square">5</li>
+
+    <li type="square">6</li>
+
+    <li type="square">7</li>
+
+    <li type="square">8</li>
+
+    <li type="square">9</li>
+
+    <li type="square">10</li>
+
+    <li type="square">11</li>
+
+    <li type="square">12</li>
+
+    <li type="square">13</li>
+
+    <li type="square">14</li>
+
+    <li type="square">15</li>
+
+    <li type="square">16</li>
+
+    <li type="square">17</li>
+
+    <li type="square">18</li>
+
+    <li type="square">19</li>
+
+    <li type="square">X</li>
+
+    <li type="square">Y</li>
+
+    <li type="square">MT</li>
+
+</ul>
+<a href="/">Main page</a>
+</body>
+</html>
+
+====================
+
+---> Chromosome endpoint
+
+* TEST 1:
+
+* Input: http://localhost:8081/chromosome?specie=mouse&chromosome=18
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: lightblue;">
+<p> Length of the chromosome: 90720763</p>
+<p></p>
+<a href="/">Main page</a>
+</body>
+</html>
+
+* TEST 2:
+
+* Input: http://localhost:8081/chromosome?specie=mouse&chromosome=3
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: lightblue;">
+<p> Length of the chromosome: 159745316</p>
+<p></p>
+<a href="/">Main page</a>
+</body>
+</html>
+
