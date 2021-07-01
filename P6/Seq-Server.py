@@ -9,7 +9,7 @@ ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ls.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 # Configure the Server's IP and PORT
-PORT = 8080
+PORT = 8081
 IP = "127.0.0.1"
 
 # -- Step 1: create the socket
@@ -49,7 +49,7 @@ while True:
 
     formatted_message = server_utils.format_command(msg)
     print(formatted_message)
-    formatted_message = formatted_message.split(" ")
+    formatted_message = formatted_message.split(' ')
 
     if len(formatted_message) == 1:
         command = formatted_message[0]

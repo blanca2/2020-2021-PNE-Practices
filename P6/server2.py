@@ -62,11 +62,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         arguments = parse_qs(o.query)
         print("Resource requested: ", path_name)
         print("Parameters: ", arguments)
-        # IN this simple server version:
-        # We are NOT processing the client's request
-        # It is a happy server: It always returns a message saying
-        # that everything is ok
-        # Message to send back to the client
+
         context = {}
         if path_name == '/':
             context["n_seqs"] = len(l_seqs)
@@ -91,6 +87,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = su.comp(sequence)
             elif calculation == 'Rev':
                 contents = su.rev(sequence)
+            else:
+                contents = su.read_template_html_file("./html/error.html").render()
         else:
             contents = su.read_template_html_file("html/error.html").render()
 

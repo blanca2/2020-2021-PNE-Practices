@@ -67,6 +67,10 @@ class Seq:
                     g += 1
         return a, c, g, t
 
+    def count(self):
+        a, c, t, g = self.count_bases()
+        return {'A': a, 'C': c, 'T': t, 'G': g}
+
     def percentages(self, count_bases, seq_len):
         a = "A:" + str(round(count_bases[0] / seq_len * 100, 2)) + "%"
         c = "C:" + str(round(count_bases[1] / seq_len * 100, 2)) + "%"

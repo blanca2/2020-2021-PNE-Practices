@@ -1,20 +1,15 @@
 import socket
-import termcolor
 import pathlib
+import termcolor
+from urllib.parse import urlparse, parse_qs
 
-# -- Server network parameters
 IP = "127.0.0.1"
 PORT = 8080
 HTML_ASSETS = "./html/"
+
 def read_html_file(filename):
     content = pathlib.Path(filename).read_text()
     return content
-
-def get_resource(path):
-    resp = ""
-    if path == "/info/A":
-        resp = Path("A.html").read_text()
-    return resp
 
 def process_client(s):
     # -- Receive the request message
@@ -23,28 +18,19 @@ def process_client(s):
 
     print("Message FROM CLIENT: ")
 
-    # -- Split the request messages into lines
     lines = req.split('\n')
 
-    # -- The request line is the first
     req_line = lines[0]
-    path_name = req_line.split(' ')[1]
+    request = req_line.split(' ')[1]
+    o = urlparse(request)
+    path_name = o.path
+    arguments = parse_qs(o.query)
 
-    print("Resource requested: ", req_line)
-    termcolor.cprint(self.req_line, "green")
-    termcolor.cprint(self.path, 'blue')
+    print("Resource requested: ", path_name)
+    print("Parameters: ", arguments)
 
-    # -- Generate the response message
-    # It has the following lines
-    # Status line
-    # header
-    # blank line
-    # Body (content to send)
+    termcolor.cprint(req_line), 'green'
 
-    # This new contents are written in HTML language
-    body = """
-          """
-    # -- Status line: We respond that everything is ok (200 code)
     status_line = "HTTP/1.1 200 OK\n"
 
     # -- Add the Content-Type header
@@ -53,23 +39,12 @@ def process_client(s):
         body = read_html_file(HTML_ASSETS + "index.html")
     elif "/info/" in path_name:
         try:
-        #letter? string.split('/')[-1] "A, C, T, G"
-            body = read_html_file(HTML_ASSETS + path_name.split('/')[-1] + ".html")
+            body = read_html_file(HTML_ASSETS + path_name.split('/')[-1] + '.html')
         except FileNotFoundError:
-            body = read_html_file(HTML_ASSETS + "error.html")
+            body = read_html_file(HTML_ASSETS + 'Error.html')
     else:
-        body = read_html_file(HTML_ASSETS + "error.html")
-    """if path_name == "/info/A":
-        body = read_html_file(HTML_ASSETS + "A.html")
-    elif path_name == "/info/C":
-        body = read_html_file(HTML_ASSETS + "C.html")
-    elif path_name == "/info/G":
-        body = read_html_file(HTML_ASSETS + "G.html")
-    elif path_name == "/info/T":
-        body = read_html_file(HTML_ASSETS + "T.html")"""
+        body = read_html_file(HTML_ASSETS + 'Error.html')
 
-
-    # -- Add the Content-Length
     header += f"Content-Length: {len(body)}\n"
 
     # -- Build the message by joining together all the parts
@@ -77,18 +52,12 @@ def process_client(s):
     cs.send(response_msg.encode())
 
 
-# -------------- MAIN PROGRAM
-# ------ Configure the server
-# -- Listening socket
 ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# -- Optional: This is for avoiding the problem of Port already in use
 ls.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-# -- Setup up the socket's IP and PORT
 ls.bind((IP, PORT))
 
-# -- Become a listening socket
 ls.listen()
 
 print("SEQ Server configured!")

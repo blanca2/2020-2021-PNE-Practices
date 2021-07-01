@@ -13,7 +13,7 @@ answer_decoded = response.read().decode()
 print(type(answer_decoded), answer_decoded)
 dict_response = json.loads(answer_decoded)
 print(type(dict_response), dict_response)
-if dict_response["ping"] == 1:
+if dict_response['ping'] == 1:
     print("PING OK!!! The database is running")
 else:
     print("Database is down!!!!") # https://rest.ensembl.org/sequence/id/ENSG00000080603?content-type=application/json

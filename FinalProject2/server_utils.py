@@ -3,9 +3,10 @@ import termcolor
 import colorama
 import jinja2
 import pathlib
+import json
+import http.client
 
 def read_template_html_file(filename):
-    #create template object, can't be directly sent to the browser as it only reads plain text, files or html (template is none of them), we transform it by render function
     content = jinja2.Template(pathlib.Path(filename).read_text())
     return content
 
@@ -61,4 +62,11 @@ def gene(seq_name):
     contents = read_template_html_file("./html/gene.html").render(context=context)
     return contents
 
-
+def get_dict(ENDPOINT):
+    SERVER = "rest.ensembl.org"
+    PARAMS= '?content-type=application/json'
+    connection = http.client.HTTPConnection(SERVER)
+    connection.request('GET', ENDPOINT + PARAMS)
+    response = connection.getresponse()
+    dict_response = json.loads(response.read().decode())
+    return dict_response

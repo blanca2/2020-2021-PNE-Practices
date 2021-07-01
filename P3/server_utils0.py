@@ -41,10 +41,12 @@ def rev(cs, argument):
     print(response)
     cs.send(response.encode())
 
-def genes(cs, gene):
+def genes(cs, argument):
     print_colored("GENE", "yellow")
+    folder = "./SEQS/"
     sequence = Seq()
-    response = str(sequence.read_fasta('./SEQS/' + gene + '.txt'))
+    print(sequence)
+    response = str(sequence.read_fasta(folder + argument + '.txt'))
     print(response)
     cs.send(response.encode())
 

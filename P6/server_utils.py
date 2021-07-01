@@ -29,26 +29,41 @@ def get(l_seqs, number_seq):
     contents = read_template_html_file("./html/get.html").render(context=context)
     return contents
 
-def info(cs, argument):
-    print_colored("INFO", "yellow")
-    sequence = Seq(argument)
-    response = "Total length:" + str(sequence.len()) + "\n" + str(sequence.count_bases()) + "\n"
-    print(response)
-    cs.send(response.encode())
+def info(sequence):
+    s = Seq(sequence)
+    response = "Total length:" + str(Seq.len(s)) + "\r" + str(Seq.count_bases(s)) + "\r"
+    context = {
+        'sequence': sequence,
+        'information': response,
+        'operation': 'info'
+    }
+    contents = read_template_html_file('./html/operations.html').render(context=context)
+    return contents
 
-def comp(cs, argument):
-    print_colored("COMP", "yellow")
-    sequence = Seq(argument)
-    response = str(sequence.complement()) + "\n"
-    print(response)
-    cs.send(response.encode())
 
-def rev(cs, argument):
-    print_colored("REV", "yellow")
-    sequence = Seq(argument)
-    response = str(sequence.reverse()) + "\n"
-    print(response)
-    cs.send(response.encode())
+def comp(sequence):
+    s = Seq(sequence)
+    complement = s.complement()
+    response = complement + '\n'
+    context = {
+        'sequence': sequence,
+        'information': response,
+        'operation': 'comp'
+    }
+    contents = read_template_html_file('./html/operations.html').render(context=context)
+    return contents
+
+def rev(sequence):
+    s = Seq(sequence)
+    rev = s.reverse()
+    response = rev + '\n'
+    context = {
+        'sequence': sequence,
+        'information': response,
+        'operation': 'Rev'
+    }
+    contents = read_template_html_file('./html/operations.html').render(context=context)
+    return contents
 
 def gene(seq_name):
     PATH = "./Sequences/" + seq_name + ".txt"
@@ -60,5 +75,21 @@ def gene(seq_name):
     }
     contents = read_template_html_file("./html/gene.html").render(context=context)
     return contents
+
+def operation(sequence, operation_name):
+    if operation_name == "Info":
+        result = info(sequence)
+    elif operation_name == "Comp":
+        result = comp(sequence)
+    elif operation_name == "Rev":
+        result = rev(sequence)
+    context = {
+        'sequence': sequence,
+        'operation': operation_name,
+        'result': result
+    }
+    contents = read_template_html_file('./html/operations.html').render(context=context)
+    return contents
+
 
 
