@@ -7,7 +7,7 @@ EXERCISE = 5
 print(f"------| Practice {PRACTICE}, Exercise {EXERCISE} |-----")
 
 IP = "127.0.0.1"
-PORT = 8080
+PORT = 8081
 c = Client(IP, PORT)
 print(c.talk("Sending the u5 gene to the server..."))
 print(c.talk(Path("U5.txt").read_text()))

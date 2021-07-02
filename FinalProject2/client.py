@@ -82,5 +82,5 @@ try:
     print("The length of this gene is: ", data['length'])
     print("The % of bases is: ", data['percentages'])
 except ConnectionRefusedError:
-        print("ERROR! Cannot connect to the Server")
-        exit()
+    print("ERROR! Cannot connect to the Server")
+    exit()

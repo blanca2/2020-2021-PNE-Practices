@@ -1,10 +1,5 @@
-from Client0 import Client
-PRACTICE = 2
-EXERCISE = 1
-print(f"------| Practice {PRACTICE}, Exercise {EXERCISE} |-----")
+from Seq1 import Seq
 
-IP = "127.0.0.1"
-PORT = 8080
-c = Client(IP, PORT)
-c.ping()
-print(f"IP: {c.ip}, {c.port}")
+print("-----| Exercise 1 |------")
+seq = Seq("ACTGA")
+print("Sequence" + str(1) + ": (Length: " + str(seq.len()), ")" + str(seq))

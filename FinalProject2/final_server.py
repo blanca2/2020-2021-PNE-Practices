@@ -6,6 +6,8 @@ import server_utils as su
 import Seq1
 import json
 
+# I made comments on the json parts because it doesn´t entierly work and it was giving an error in the basic and medium level.
+
 gene_dict = {
     "FRAT1": "ENSG00000165879",
     "ADA": "ENSG00000196839",
