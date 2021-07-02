@@ -1,7 +1,7 @@
 import Seq0
 
 ID = "U5.txt"
-GENE_FOLDER = "./sequences/"
+GENE_FOLDER = "./Sequences/"
 
 print("DNA file:", ID)
 u5_Seq = Seq0.seq_read_fasta(GENE_FOLDER + ID)
